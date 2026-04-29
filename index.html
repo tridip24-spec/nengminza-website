@@ -58,7 +58,7 @@
   .hero-headline em { font-style: normal; color: var(--gold-light); }
   .hero-sub { margin-top: 1.6rem; font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 540px; animation: fadeUp 1s 0.2s ease both; }
   .hero-cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 1s 0.3s ease both; }
-  .btn-primary { background: var(--gold); color: var(--charcoal); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-primary { background: var(--gold); color: var(--charcoal); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
   .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 32px; border-radius: 3px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
   .btn-ghost:hover { border-color: var(--gold-light); color: var(--gold-light); }
@@ -73,16 +73,36 @@
   .section-title.white { color: var(--white); }
 
   /* ABOUT */
-  #about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  #about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .about-text p { font-size: 1rem; line-height: 1.85; color: var(--grey); margin-top: 1.2rem; }
-  .founder-card { background: var(--forest); border-radius: 8px; padding: 48px 40px; color: white; }
-  .founder-initials { width: 72px; height: 72px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
-  .founder-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.3rem; }
-  .founder-role { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
-  .founder-card p { font-size: 0.95rem; line-height: 1.85; color: rgba(255,255,255,0.80); }
-  .founder-card p + p { margin-top: 1rem; }
-  .founder-quote { border-left: 3px solid var(--gold); padding: 10px 0 10px 18px; margin: 1.2rem 0; font-style: italic; font-size: 1rem; line-height: 1.7; color: var(--gold-light); }
-  .founder-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.6rem; }
+
+  /* FOUNDER CARD */
+  .founder-card { background: var(--forest); border-radius: 12px; overflow: hidden; color: white; box-shadow: 0 24px 60px rgba(0,0,0,0.18); }
+
+  .founder-photo-wrap {
+    position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    background: #14402b;
+  }
+  .founder-photo-wrap img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    display: block;
+    filter: grayscale(10%) contrast(1.05);
+    transition: transform 0.5s ease;
+  }
+  .founder-photo-wrap:hover img { transform: scale(1.03); }
+  .founder-photo-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(29,77,53,0.95) 0%, transparent 100%);
+    padding: 32px 32px 20px;
+  }
+  .founder-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.2rem; }
+  .founder-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+  .founder-body { padding: 32px 36px 36px; }
+  .founder-body p { font-size: 0.94rem; line-height: 1.85; color: rgba(255,255,255,0.80); }
+  .founder-body p + p { margin-top: 1rem; }
+  .founder-quote { border-left: 3px solid var(--gold); padding: 10px 0 10px 18px; margin: 1.2rem 0; font-style: italic; font-size: 0.97rem; line-height: 1.7; color: var(--gold-light); }
+  .founder-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.4rem; }
   .tag { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15); color: var(--gold-light); font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
 
   /* VISION */
@@ -134,7 +154,7 @@
   .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
 
   /* FOOTER */
-  footer { background: #41; padding: 28px 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer { background: #111; padding: 28px 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.5); }
   .footer-logo em { font-style: normal; color: var(--gold); }
   footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
@@ -148,6 +168,7 @@
     .hamburger { display: flex; }
     .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--forest); padding: 1.5rem 5vw 2rem; gap: 1.2rem; }
     .vision-box { padding: 36px 24px; }
+    .founder-body { padding: 24px; }
   }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
@@ -187,8 +208,8 @@
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-number">18+</div><div class="stat-label">Years in Operation</div></div>
-    <div class="stat"><div class="stat-number">4+</div><div class="stat-label">Villages Reached</div></div>
-    <div class="stat"><div class="stat-number">4</div><div class="stat-label">Districts Covered</div></div>
+    <div class="stat"><div class="stat-number">4</div><div class="stat-label">Villages Reached</div></div>
+    <div class="stat"><div class="stat-number">4+</div><div class="stat-label">Districts Covered</div></div>
     <div class="stat"><div class="stat-number">₹2Cr</div><div class="stat-label">Govt. Investment</div></div>
   </div>
 </section>
@@ -199,25 +220,36 @@
     <div class="section-label">About Us · Leadership</div>
     <h2 class="section-title">A Vision Born in the Hills of Garo</h2>
     <p>Nengminza Enterprises is more than a business — it is the materialisation of one person's conviction that enterprise, when rooted in community, has the power to transform a region. Founded and led from Garo Hills, the company works at the crossroads of agriculture, rural infrastructure, and government-backed development.</p>
-    <p>From rubber plantations spanning 18 years to MNREGA supply operations covering 4+ villages, every venture is built with a single purpose: to create lasting economic foundations for the people of Meghalaya.</p>
-    <a href="#ventures" class="btn-primary" style="margin-top:1.4rem; display:inline-block;">Explore Our Ventures</a>
+    <p>From rubber plantations spanning 18 years to MNREGA supply operations covering 4 villages across 4+ districts, every venture is built with a single purpose: to create lasting economic foundations for the people of Meghalaya.</p>
+    <a href="#ventures" class="btn-primary" style="margin-top:1.4rem;">Explore Our Ventures</a>
   </div>
 
   <div class="about-visual reveal">
     <div class="founder-card">
-      <div class="founder-initials">LS</div>
-      <div class="founder-name">Lovestone Nengminza Sangma</div>
-      <div class="founder-role">Founder &amp; Managing Director</div>
-      <p>Where legal precision meets entrepreneurial vision, Lovestone Nengminza Sangma stands apart. A law graduate by discipline and a builder by nature, he brings an uncommon combination of analytical rigour and bold strategic instinct to everything he leads.</p>
-      <div class="founder-quote">"Business, when executed with integrity, is the most powerful force for change a region can have."</div>
-      <p>Born and raised in the Garo Hills of Meghalaya, his leadership is shaped by something no boardroom can teach — a deep, lived understanding of the land, its people, and its untapped promise. That closeness to home isn't sentiment. It's strategy.</p>
-      <p>His legal foundation gives Nengminza Enterprises its backbone — a sharp framework for navigating government contracts, regulatory complexity, and rural development policy. Under his leadership, the enterprise operates where it matters most: at the intersection of economic growth and lasting community impact.</p>
-      <div class="founder-tags">
-        <span class="tag">Law Graduate</span>
-        <span class="tag">Garo Hills Native</span>
-        <span class="tag">Founder &amp; MD</span>
-        <span class="tag">Meghalaya</span>
+
+      <!-- FOUNDER PHOTO -->
+      <div class="founder-photo-wrap">
+        <img src="founder.png" alt="Lovestone Nengminza Sangma — Founder & Managing Director"/>
+        <div class="founder-photo-overlay">
+          <div class="founder-name">Lovestone Nengminza Sangma</div>
+          <div class="founder-role">Founder &amp; Managing Director</div>
+        </div>
       </div>
+
+      <!-- FOUNDER BIO -->
+      <div class="founder-body">
+        <p>Where legal precision meets entrepreneurial vision, Lovestone Nengminza Sangma stands apart. A law graduate by discipline and a builder by nature, he brings an uncommon combination of analytical rigour and bold strategic instinct to everything he leads.</p>
+        <div class="founder-quote">"Business, when executed with integrity, is the most powerful force for change a region can have."</div>
+        <p>Born and raised in the Garo Hills of Meghalaya, his leadership is shaped by something no boardroom can teach — a deep, lived understanding of the land, its people, and its untapped promise. That closeness to home isn't sentiment. It's strategy.</p>
+        <p>His legal foundation gives Nengminza Enterprises its backbone — a sharp framework for navigating government contracts, regulatory complexity, and rural development policy. Under his leadership, the enterprise operates where it matters most: at the intersection of economic growth and lasting community impact.</p>
+        <div class="founder-tags">
+          <span class="tag">Law Graduate</span>
+          <span class="tag">Garo Hills Native</span>
+          <span class="tag">Founder &amp; MD</span>
+          <span class="tag">Meghalaya</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -284,8 +316,8 @@
       <h3>MNREGA Supply Operations</h3>
       <p>We are a trusted supply partner for MNREGA-funded rural employment schemes — ensuring materials reach the right places at the right time across Meghalaya.</p>
       <ul class="venture-details">
-        <li><strong>Coverage:</strong> All 4 districts of Meghalaya</li>
-        <li><strong>Villages:</strong> 4+ communities served</li>
+        <li><strong>Coverage:</strong> 4+ districts of Meghalaya</li>
+        <li><strong>Villages:</strong> 4 communities served</li>
         <li><strong>Materials:</strong> Cement &amp; steel reinforcement</li>
         <li><strong>Purpose:</strong> Rural employment &amp; infrastructure</li>
         <li><strong>Impact:</strong> Employment generation &amp; development</li>
@@ -310,8 +342,8 @@
     <div class="impact-card reveal"><div class="impact-number">2,000+</div><div class="impact-label">Betel Nut Trees</div></div>
     <div class="impact-card reveal"><div class="impact-number">2T</div><div class="impact-label">Annual Arecanut Production</div></div>
     <div class="impact-card reveal"><div class="impact-number">₹2Cr</div><div class="impact-label">Government Construction Investment</div></div>
-    <div class="impact-card reveal"><div class="impact-number">4+</div><div class="impact-label">Villages Served via MNREGA</div></div>
-    <div class="impact-card reveal"><div class="impact-number">4</div><div class="impact-label">Districts of Meghalaya Covered</div></div>
+    <div class="impact-card reveal"><div class="impact-number">4</div><div class="impact-label">Villages Served via MNREGA</div></div>
+    <div class="impact-card reveal"><div class="impact-number">4+</div><div class="impact-label">Districts of Meghalaya Covered</div></div>
   </div>
 </section>
 
@@ -335,7 +367,7 @@
     <div class="contact-box">
       <div class="contact-box-icon">🌐</div>
       <h4>Reach</h4>
-      <p>All 4 Districts of Meghalaya</p>
+      <p>4+ Districts of Meghalaya</p>
     </div>
     <div class="contact-box">
       <div class="contact-box-icon">🤝</div>
@@ -362,13 +394,11 @@
 </footer>
 
 <script>
-  // Hamburger
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -379,7 +409,6 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-  // Form
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.form-submit');
